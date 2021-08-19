@@ -11,8 +11,8 @@ class ClientThread(threading.Thread):
 
     def run(self):
         print ("Connectado com: ", clientAddress)
-        #self.csocket.send(bytes("Hi, This is from Server..",'utf-8'))
         msg = ''
+       
         while True:
             data = self.csocket.recv(2048)
             msg = data.decode()
@@ -25,7 +25,6 @@ class ClientThread(threading.Thread):
 LOCALHOST = "127.0.0.1"
 PORT = 12000
 server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-server.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
 server.bind((LOCALHOST, PORT))
 print("Servidor Online!")
 print("Aguardando Conexão...")
